@@ -19,12 +19,19 @@ A simple Java-based Store Management System that manages products, customers, st
 ## 🗂 Project Structure
 .
 ├── Main.java            # Entry point – runs the system
+
 ├── Person.java          # Base class for Customer and Staff
+
 ├── Customer.java        # Customer entity
+
 ├── Staff.java           # Staff entity
+
 ├── Order.java           # Represents an order
+
 ├── OrderItem.java       # Represents items within an order
+
 ├── Billing.java         # Interface with discount values
+
 ├── EntityValidation.java# Interface with validation constants/rules
 
 ## 🚀 How to Run
