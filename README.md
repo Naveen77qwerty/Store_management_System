@@ -1,18 +1,61 @@
-## Getting Started
+#Store Management System (Java)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A simple Java-based Store Management System that manages products, customers, staff, and orders. Built with Object-Oriented Programming principles, it provides a foundation for handling common store operations such as billing, discounts, and entity validation.
 
-## Folder Structure
+✨ Features
 
-The workspace contains two folders by default, where:
+📦 Inventory Handling – manage products through OrderItem objects.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+👥 Customer & Staff Management – maintain customer records and staff details using Customer, Staff, and Person classes.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+🛒 Order Processing – create and manage orders via Order.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+💳 Billing & Discounts – apply discount values through the Billing interface.
 
-## Dependency Management
+✅ Validation – enforce entity rules using the EntityValidation interface.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+⚡ Console-based Execution – run and test directly in the terminal.
+
+🗂 Project Structure
+.
+├── Main.java            # Entry point – runs the system
+├── Person.java          # Base class for Customer and Staff
+├── Customer.java        # Customer entity
+├── Staff.java           # Staff entity
+├── Order.java           # Represents an order
+├── OrderItem.java       # Represents items within an order
+├── Billing.java         # Interface with discount values
+├── EntityValidation.java# Interface with validation constants/rules
+
+🚀 How to Run
+
+Clone this repository:
+
+git clone https://github.com/your-username/store-management-system.git
+cd store-management-system
+
+
+Compile the project:
+
+javac *.java
+
+
+Run the program:
+
+java Main
+
+🔧 Tech Stack
+
+Language: Java
+
+Concepts: OOP (Inheritance, Polymorphism, Interfaces), Collections, Encapsulation
+
+📈 Future Improvements
+
+Add a database backend (MySQL/PostgreSQL) instead of in-memory storage
+
+GUI frontend (JavaFX or Swing)
+
+Advanced billing system with tax and coupons
+
+Authentication & role-based access
