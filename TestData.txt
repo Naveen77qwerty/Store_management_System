@@ -1,0 +1,93 @@
+==== TEST DATA FOR STORE MANAGEMENT SYSTEM ====
+
+==== STAFF DATA ====
+ID: 101, Name: John Smith, Email: john@store.com, Phone: 12345678901, Salary: 50000.00
+ID: 102, Name: Maria Garcia, Email: maria@store.com, Phone: 23456789012, Salary: 55000.00
+ID: 103, Name: Ahmed Khan, Email: ahmed@store.com, Phone: 34567890123, Salary: 52000.00
+ID: 104, Name: Sarah Wilson, Email: sarah@store.com, Phone: 45678901234, Salary: 51000.00
+ID: 105, Name: Toshio Tanaka, Email: toshio@store.com, Phone: 56789012345, Salary: 54000.00
+
+==== CUSTOMER DATA ====
+ID: 201, Name: Alice Johnson, Email: alice@example.com, Phone: 12345678901
+ID: 202, Name: Bob Williams, Email: bob@example.com, Phone: 23456789012
+ID: 203, Name: Carol Brown, Email: carol@example.com, Phone: 34567890123
+ID: 204, Name: David Miller, Email: david@example.com, Phone: 45678901234
+ID: 205, Name: Emily Davis, Email: emily@example.com, Phone: 56789012345
+
+==== PRODUCT DATA ====
+Brand: Samsung, Category: Smartphone, Name: Galaxy S23, Stock: 50, Model Year: 2023, Price: 999.99
+Brand: Apple, Category: Smartphone, Name: iPhone 14, Stock: 45, Model Year: 2022, Price: 1099.99
+Brand: Sony, Category: Television, Name: BRAVIA XR, Stock: 30, Model Year: 2023, Price: 1299.99
+Brand: Dell, Category: Laptop, Name: XPS 15, Stock: 25, Model Year: 2023, Price: 1599.99
+Brand: Bose, Category: Audio, Name: QuietComfort, Stock: 60, Model Year: 2022, Price: 299.99
+Brand: LG, Category: Refrigerator, Name: InstaView, Stock: 15, Model Year: 2023, Price: 1899.99
+Brand: Canon, Category: Camera, Name: EOS R5, Stock: 20, Model Year: 2021, Price: 3799.99
+Brand: Nintendo, Category: Gaming, Name: Switch OLED, Stock: 35, Model Year: 2021, Price: 349.99
+Brand: Dyson, Category: Appliance, Name: V11 Vacuum, Stock: 40, Model Year: 2022, Price: 599.99
+Brand: Philips, Category: Kitchen, Name: AirFryer XXL, Stock: 55, Model Year: 2023, Price: 249.99
+
+==== ORDER SCENARIOS ====
+
+# Scenario 1: Regular order with single item
+Order ID: 301
+Customer: Alice Johnson (ID: 201)
+Staff: John Smith (ID: 101)
+Date: Current date
+Items: 
+  - Samsung Galaxy S23, Quantity: 1, Discount: 0%
+Expected total: $999.99
+
+# Scenario 2: Multiple items with regular discount
+Order ID: 302
+Customer: Bob Williams (ID: 202)
+Staff: Maria Garcia (ID: 102)
+Date: Current date
+Items:
+  - Apple iPhone 14, Quantity: 1, Discount: 30%
+  - Bose QuietComfort, Quantity: 1, Discount: 30%
+Expected total: $979.99 ($1099.99*0.7 + $299.99*0.7)
+
+# Scenario 3: Multiple items with super discount
+Order ID: 303
+Customer: Carol Brown (ID: 203)
+Staff: Ahmed Khan (ID: 103)
+Date: Current date
+Items:
+  - Sony BRAVIA XR, Quantity: 1, Discount: 50%
+  - Nintendo Switch OLED, Quantity: 2, Discount: 50%
+Expected total: $999.99 ($1299.99*0.5 + $349.99*2*0.5)
+
+# Scenario 4: Large quantity order
+Order ID: 304
+Customer: David Miller (ID: 204)
+Staff: Sarah Wilson (ID: 104)
+Date: Current date
+Items:
+  - Philips AirFryer XXL, Quantity: 5, Discount: 30%
+Expected total: $874.97 ($249.99*5*0.7)
+
+# Scenario 5: High-value order
+Order ID: 305
+Customer: Emily Davis (ID: 205)
+Staff: Toshio Tanaka (ID: 105)
+Date: Current date
+Items:
+  - Dell XPS 15, Quantity: 2, Discount: 50%
+  - Canon EOS R5, Quantity: 1, Discount: 50%
+Expected total: $3499.99 ($1599.99*2*0.5 + $3799.99*0.5)
+
+==== VALIDATION TEST DATA ====
+
+# Invalid Email Formats
+notanemail.com
+@missingname.com
+noatsymbol
+
+# Invalid Phone Numbers
+1234567890 (10 digits, too short)
+123456789012 (12 digits, too long)
+12345abcde (contains letters)
+
+# Invalid Price/Salary Values
+-100.00 (negative)
+0 (zero) 

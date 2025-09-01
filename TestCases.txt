@@ -1,0 +1,204 @@
+===== STORE MANAGEMENT SYSTEM TEST CASES =====
+
+========== TEST CASE 1: ADD STAFF (VALID) ==========
+Input:
+1
+Heisenberg
+John
+john@company.com
+12345678901
+101
+50000
+
+Expected Output:
+Staff added successfully!
+Staff name, email, phone, ID and salary should be displayed
+
+========== TEST CASE 2: ADD STAFF (INVALID EMAIL) ==========
+Input:
+1
+Heisenberg
+Sarah
+sarahcompany.com (missing @)
+12345678901
+102
+55000
+
+Expected Output:
+Error: Invalid email format.
+
+========== TEST CASE 3: ADD STAFF (INVALID PHONE) ==========
+Input:
+1
+Heisenberg
+Mike
+mike@company.com
+1234567890 (only 10 digits)
+103
+60000
+
+Expected Output:
+Error: Phone must be 11 digits.
+
+========== TEST CASE 4: ADD STAFF (INVALID SALARY) ==========
+Input:
+1
+Heisenberg
+Jane
+jane@company.com
+12345678901
+104
+-5000 (negative salary)
+
+Expected Output:
+Error: Salary must be positive.
+
+========== TEST CASE 5: ADD PRODUCT (VALID) ==========
+Input:
+2
+Heisenberg
+Samsung
+Electronics
+GalaxyS23
+50
+2023
+999.99
+
+Expected Output:
+Product added successfully!
+Product details should be displayed
+
+========== TEST CASE 6: ADD PRODUCT (INVALID MODEL YEAR) ==========
+Input:
+2
+Heisenberg
+Apple
+Electronics
+iPhone15
+30
+2030 (future year)
+1299.99
+
+Expected Output:
+Error: Invalid model year.
+
+========== TEST CASE 7: ADD PRODUCT (INVALID PRICE) ==========
+Input:
+2
+Heisenberg
+Sony
+Electronics
+PlayStation5
+20
+2023
+-499.99 (negative price)
+
+Expected Output:
+Error: List price must be positive.
+
+========== TEST CASE 8: CREATE CUSTOMER (VALID) ==========
+Input:
+3
+Alice
+12345678901
+alice@email.com
+201
+
+Expected Output:
+Customer created successfully!
+Customer details should be displayed
+
+========== TEST CASE 9: CREATE CUSTOMER (INVALID EMAIL) ==========
+Input:
+3
+Bob
+12345678901
+bobemail.com (missing @)
+202
+
+Expected Output:
+Error: Invalid email format.
+
+========== TEST CASE 10: CREATE CUSTOMER (INVALID PHONE) ==========
+Input:
+3
+Charlie
+123456789 (less than 11 digits)
+charlie@email.com
+203
+
+Expected Output:
+Error: Phone must be 11 digits.
+
+========== TEST CASE 11: CREATE ORDER (VALID) ==========
+Prerequisites:
+- At least one staff member added (Test Case 1)
+- At least one product added (Test Case 5)
+- At least one customer added (Test Case 8)
+
+Input:
+4
+301
+1 (select customer Alice)
+1 (select staff John)
+1 (select product GalaxyS23)
+2 (quantity)
+0 (no more items)
+1 (super discount)
+
+Expected Output:
+Order created successfully!
+Order details should be displayed
+Total price after discount should show 50% off (999.99*2*0.5 = 999.99)
+
+========== TEST CASE 12: CREATE ORDER (OUT OF STOCK) ==========
+Prerequisites:
+- Run Test Case 11 first to reduce stock of GalaxyS23 by 2
+- Add a product with 0 stock
+
+Input:
+2
+Heisenberg
+Google
+Electronics
+Pixel8
+0
+2023
+899.99
+
+Then:
+4
+302
+1 (select customer Alice)
+1 (select staff John)
+2 (select product Pixel8)
+1 (quantity)
+
+Expected Output:
+No products available in stock. (Or similar message)
+
+========== TEST CASE 13: DISPLAY ALL DETAILS ==========
+Prerequisites:
+- Run several of the above test cases to add data
+
+Input:
+5
+Heisenberg
+
+Expected Output:
+All staff, product, customer, and order details should be displayed
+
+========== TEST CASE 14: DISPLAY ALL DETAILS (UNAUTHORIZED) ==========
+Input:
+5
+WrongName
+
+Expected Output:
+You are not authorized to view details.
+
+========== TEST CASE 15: EXIT SYSTEM ==========
+Input:
+6
+
+Expected Output:
+Thank you for using the Store Management System! 

@@ -1,0 +1,74 @@
+===== EDGE CASES AND BOUNDARY TEST CASES =====
+
+==== BOUNDARY CASES ====
+
+## Minimum/Maximum Values
+1. Add a product with minimum valid price (0.01)
+2. Add a product with maximum stock (Integer.MAX_VALUE)
+3. Add a staff member with minimum valid salary (0.01)
+4. Add a product with earliest valid model year (1901)
+5. Add a product with current year as model year
+
+## Multiple Items
+1. Create an order with maximum number of different products
+2. Create an order with maximum quantity of a single product
+
+## Empty Values
+1. Try to create a customer with empty name
+2. Try to create a product with empty brand
+3. Try to display details with no data in system
+
+==== EDGE CASES ====
+
+## Stock Management
+1. Order the exact remaining quantity of a product (should reduce stock to 0)
+2. Try to order more than available stock
+3. Try to order a product with stock = 0
+
+## Validation Extremes
+1. Email with just "@" character
+2. Email with multiple @ symbols (a@b@c.com)
+3. Phone number with exactly 11 digits but all zeros
+4. Phone number with 11 digits but non-numeric characters
+5. Staff ID or Customer ID = 0 (should be invalid)
+6. Staff ID or Customer ID = negative number (should be invalid)
+
+## Special Characters
+1. Create a customer with special characters in name (e.g., "O'Connor", "Smith-Jones")
+2. Create a product with special characters in name (e.g., "iPhone 14 Pro Max (512GB)")
+
+## Concurrency Simulation
+1. Simulate two separate users trying to order the last item of a product
+   - First set stock to 1
+   - Process an order for quantity 1
+   - Try to process another order for the same product with quantity 1
+   - System should detect the item is out of stock
+
+## Data Overflow
+1. Try to create a product with extremely high price (beyond what might be reasonable)
+2. Try to create an order with extreme quantity (test numeric overflow)
+
+==== ERROR HANDLING TESTS ====
+
+## Input Type Errors
+1. Enter text when system expects a number
+2. Enter decimal when system expects an integer
+3. Enter negative number when positive is required
+
+## Authentication Tests
+1. Try to access manager functions (add staff, add product) with incorrect code
+2. Try multiple incorrect authentication attempts
+
+## Menu Navigation
+1. Test entering menu options outside valid range (e.g., option 7 when only 1-6 are valid)
+2. Test entering 0 or negative numbers as menu options
+
+==== SPECIFIC IMPLEMENTATION TESTS ====
+
+## EntityValidation Interface
+1. Test all classes implementing EntityValidation to ensure displayDetails() is properly implemented
+
+## Billing Interface
+1. Test calculateTotalPrice() with all discount options
+2. Test returnstock() to ensure stock is properly updated
+3. Test isValid() with various valid and invalid order configurations 

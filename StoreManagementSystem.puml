@@ -1,0 +1,125 @@
+@startuml Store Management System
+
+' Style settings
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+' Interfaces
+interface EntityValidation {
+    + {abstract} displayDetails(): void
+}
+
+interface Billing {
+    + {static} SUPER_DISCOUNT: double = 0.5
+    + {static} MAX_DISCOUNT: double = 0.3
+    + {abstract} calculateTotalPrice(sc: Scanner): double
+    + {abstract} returnstock(): int
+    + {abstract} isValid(): boolean
+}
+
+' Abstract Class
+abstract class Person {
+    # name: String
+    # email: String
+    # phone: String
+    + Person(name: String, email: String, phone: String)
+    + {abstract} getName(): String
+    + {abstract} setName(name: String): void
+    + {abstract} getEmail(): String
+    + {abstract} setEmail(email: String): void
+    + {abstract} getPhone(): String
+    + {abstract} setPhone(phone: String): void
+}
+
+' Classes
+class Customer {
+    - customerId: int
+    + Customer(name: String, phone: String, email: String, customerId: int)
+    + getCustomerId(): int
+    + displayDetails(): void
+}
+
+class Staff {
+    - staffId: int
+    - salary: double
+    + Staff(name: String, email: String, phone: String, staffId: int, salary: double)
+    + getStaffId(): int
+    + setStaffId(staffId: int): void
+    + getSalary(): double
+    + setSalary(salary: double): void
+    + displayDetails(): void
+}
+
+class Product {
+    + Brand: String
+    + Category: String
+    + productName: String
+    + stock: int
+    + modelYear: int
+    + price: double
+    + Product(Brand: String, Category: String, productName: String, stock: int, modelYear: int, price: double)
+    + setBrand(Brand: String): void
+    + setCategory(Category: String): void
+    + setStock(stock: int): void
+    + setProductName(productName: String): void
+    + setModelYear(modelYear: int): void
+    + setprice(price: double): void
+    + displayDetails(): void
+}
+
+class Order {
+    + orderId: int
+    + customer: Customer
+    + orderDate: Date
+    - staff: Staff
+    + orderItem: OrderItem[]
+    + Order(orderId: int, customer: Customer, orderDate: Date, requiredDate: Date, shippedDate: Date, store: Store, staff: Staff, orderItem: OrderItem[])
+    + getCustomer(): Customer
+    + setCustomer(customer: Customer): void
+    + calculateTotalPrice(sc: Scanner): double
+    + isValid(): boolean
+    + returnstock(): int
+    + displayDetails(): void
+}
+
+class OrderItem {
+    + orderId: int
+    + product: Product
+    + quantity: int
+    - discount: double
+    + OrderItem(orderId: int, product: Product, quantity: int, discount: double)
+    + getDiscount(): double
+    + setDiscount(discount: double): void
+    + isValid(): boolean
+}
+
+class Store {
+    - staff: Staff[]
+    - product: Product[]
+    + Store(staff: Staff[], product: Product[])
+    + displayDetails(): void
+}
+
+' Relationships
+Person <|-- Customer
+Person <|-- Staff
+Person ..|> EntityValidation
+Customer ..|> EntityValidation
+Staff ..|> EntityValidation
+Product ..|> EntityValidation
+Store ..|> EntityValidation
+Order ..|> EntityValidation
+Order ..|> Billing
+
+Order "1" *-- "*" OrderItem : contains
+Order "1" o-- "1" Customer : has
+Order "1" o-- "1" Staff : has
+OrderItem "1" o-- "1" Product : references
+Store "1" o-- "*" Staff : manages
+Store "1" o-- "*" Product : contains
+
+@enduml 
