@@ -1,4 +1,4 @@
-Store Management System (Java)
+#Store Management System (Java)
 
 A simple Java-based Store Management System that manages products, customers, staff, and orders. Built with Object-Oriented Programming principles, it provides a foundation for handling common store operations such as billing, discounts, and entity validation.
 
