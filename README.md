@@ -1,8 +1,8 @@
-#Store Management System (Java)
+# Store Management System (Java)
 
 A simple Java-based Store Management System that manages products, customers, staff, and orders. Built with Object-Oriented Programming principles, it provides a foundation for handling common store operations such as billing, discounts, and entity validation.
 
-✨ Features
+## ✨ Features
 
 📦 Inventory Handling – manage products through OrderItem objects.
 
@@ -16,7 +16,7 @@ A simple Java-based Store Management System that manages products, customers, st
 
 ⚡ Console-based Execution – run and test directly in the terminal.
 
-🗂 Project Structure
+## 🗂 Project Structure
 .
 ├── Main.java            # Entry point – runs the system
 ├── Person.java          # Base class for Customer and Staff
@@ -27,7 +27,7 @@ A simple Java-based Store Management System that manages products, customers, st
 ├── Billing.java         # Interface with discount values
 ├── EntityValidation.java# Interface with validation constants/rules
 
-🚀 How to Run
+## 🚀 How to Run
 
 Clone this repository:
 
@@ -44,13 +44,13 @@ Run the program:
 
 java Main
 
-🔧 Tech Stack
+## 🔧 Tech Stack
 
 Language: Java
 
 Concepts: OOP (Inheritance, Polymorphism, Interfaces), Collections, Encapsulation
 
-📈 Future Improvements
+## 📈 Future Improvements
 
 Add a database backend (MySQL/PostgreSQL) instead of in-memory storage
 
