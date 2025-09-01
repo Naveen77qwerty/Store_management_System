@@ -31,7 +31,7 @@ A simple Java-based Store Management System that manages products, customers, st
 
 Clone this repository:
 
-git clone https://github.com/your-username/store-management-system.git
+git clone [https://github.com/your-username/store-management-system.git](https://github.com/Naveen77qwerty/Store_management_System.git)
 cd store-management-system
 
 
